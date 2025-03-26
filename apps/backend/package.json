@@ -1,0 +1,20 @@
+{
+  "name": "metaverse",
+  "version": "1.0.50",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "bun run --watch src/index.ts"
+  },
+  "dependencies": {
+    "@polkadot/util": "^13.4.3",
+    "@polkadot/util-crypto": "^13.4.3",
+    "@yolk-oss/elysia-env": "^2.0.0",
+    "elysia": "latest",
+    "pinata": "^2.1.0",
+    "contract-instance": "workspace:*"
+  },
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "module": "src/index.js"
+}

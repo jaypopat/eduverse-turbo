@@ -1,0 +1,4220 @@
+{
+  "source": {
+    "hash": "0x85a4de87dbb0c5187016e104cf93e8b947f81f443fa6dbc19e5487d481154487",
+    "language": "ink! 5.1.1",
+    "compiler": "rustc 1.85.0-nightly",
+    "build_info": {
+      "rust_toolchain": "nightly-x86_64-unknown-linux-gnu",
+      "cargo_contract_version": "5.0.2",
+      "build_mode": "Release",
+      "wasm_opt_settings": {
+        "optimization_passes": "Z",
+        "keep_debug_symbols": false
+      }
+    }
+  },
+  "contract": {
+    "name": "course_management",
+    "version": "5.1.0",
+    "authors": [
+      "Use Ink <ink@use.ink>"
+    ]
+  },
+  "image": null,
+  "version": 5,
+  "types": [
+    {
+      "id": 0,
+      "type": {
+        "def": {
+          "primitive": "u32"
+        }
+      }
+    },
+    {
+      "id": 1,
+      "type": {
+        "path": [
+          "ink_primitives",
+          "types",
+          "AccountId"
+        ],
+        "def": {
+          "composite": {
+            "fields": [
+              {
+                "type": 2,
+                "typeName": "[u8; 32]"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 2,
+      "type": {
+        "def": {
+          "array": {
+            "len": 32,
+            "type": 3
+          }
+        }
+      }
+    },
+    {
+      "id": 3,
+      "type": {
+        "def": {
+          "primitive": "u8"
+        }
+      }
+    },
+    {
+      "id": 4,
+      "type": {
+        "def": {
+          "primitive": "str"
+        }
+      }
+    },
+    {
+      "id": 5,
+      "type": {
+        "def": {
+          "primitive": "u64"
+        }
+      }
+    },
+    {
+      "id": 6,
+      "type": {
+        "def": {
+          "primitive": "u128"
+        }
+      }
+    },
+    {
+      "id": 7,
+      "type": {
+        "def": {
+          "primitive": "bool"
+        }
+      }
+    },
+    {
+      "id": 8,
+      "type": {
+        "path": [
+          "ink_storage",
+          "lazy",
+          "mapping",
+          "Mapping"
+        ],
+        "params": [
+          {
+            "name": "K",
+            "type": 0
+          },
+          {
+            "name": "V",
+            "type": 9
+          },
+          {
+            "name": "KeyType",
+            "type": 10
+          }
+        ],
+        "def": {
+          "composite": {}
+        }
+      }
+    },
+    {
+      "id": 9,
+      "type": {
+        "path": [
+          "course_management",
+          "eduverse",
+          "Course"
+        ],
+        "def": {
+          "composite": {
+            "fields": [
+              {
+                "name": "id",
+                "type": 0,
+                "typeName": "u32"
+              },
+              {
+                "name": "teacher",
+                "type": 1,
+                "typeName": "AccountId"
+              },
+              {
+                "name": "title",
+                "type": 4,
+                "typeName": "String"
+              },
+              {
+                "name": "description",
+                "type": 4,
+                "typeName": "String"
+              },
+              {
+                "name": "max_students",
+                "type": 0,
+                "typeName": "u32"
+              },
+              {
+                "name": "enrolled_count",
+                "type": 0,
+                "typeName": "u32"
+              },
+              {
+                "name": "start_time",
+                "type": 5,
+                "typeName": "Timestamp"
+              },
+              {
+                "name": "end_time",
+                "type": 5,
+                "typeName": "Timestamp"
+              },
+              {
+                "name": "price",
+                "type": 6,
+                "typeName": "Balance"
+              },
+              {
+                "name": "active",
+                "type": 7,
+                "typeName": "bool"
+              },
+              {
+                "name": "metadata_hash",
+                "type": 4,
+                "typeName": "String"
+              },
+              {
+                "name": "created_at",
+                "type": 5,
+                "typeName": "Timestamp"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 10,
+      "type": {
+        "path": [
+          "ink_storage_traits",
+          "impls",
+          "ResolverKey"
+        ],
+        "params": [
+          {
+            "name": "L",
+            "type": 11
+          },
+          {
+            "name": "R",
+            "type": 12
+          }
+        ],
+        "def": {
+          "composite": {}
+        }
+      }
+    },
+    {
+      "id": 11,
+      "type": {
+        "path": [
+          "ink_storage_traits",
+          "impls",
+          "AutoKey"
+        ],
+        "def": {
+          "composite": {}
+        }
+      }
+    },
+    {
+      "id": 12,
+      "type": {
+        "path": [
+          "ink_storage_traits",
+          "impls",
+          "ManualKey"
+        ],
+        "params": [
+          {
+            "name": "ParentKey",
+            "type": 13
+          }
+        ],
+        "def": {
+          "composite": {}
+        }
+      }
+    },
+    {
+      "id": 13,
+      "type": {
+        "def": {
+          "tuple": []
+        }
+      }
+    },
+    {
+      "id": 14,
+      "type": {
+        "def": {
+          "sequence": {
+            "type": 0
+          }
+        }
+      }
+    },
+    {
+      "id": 15,
+      "type": {
+        "path": [
+          "ink_storage",
+          "lazy",
+          "mapping",
+          "Mapping"
+        ],
+        "params": [
+          {
+            "name": "K",
+            "type": 1
+          },
+          {
+            "name": "V",
+            "type": 14
+          },
+          {
+            "name": "KeyType",
+            "type": 16
+          }
+        ],
+        "def": {
+          "composite": {}
+        }
+      }
+    },
+    {
+      "id": 16,
+      "type": {
+        "path": [
+          "ink_storage_traits",
+          "impls",
+          "ResolverKey"
+        ],
+        "params": [
+          {
+            "name": "L",
+            "type": 11
+          },
+          {
+            "name": "R",
+            "type": 17
+          }
+        ],
+        "def": {
+          "composite": {}
+        }
+      }
+    },
+    {
+      "id": 17,
+      "type": {
+        "path": [
+          "ink_storage_traits",
+          "impls",
+          "ManualKey"
+        ],
+        "params": [
+          {
+            "name": "ParentKey",
+            "type": 13
+          }
+        ],
+        "def": {
+          "composite": {}
+        }
+      }
+    },
+    {
+      "id": 18,
+      "type": {
+        "path": [
+          "ink_storage",
+          "lazy",
+          "mapping",
+          "Mapping"
+        ],
+        "params": [
+          {
+            "name": "K",
+            "type": 1
+          },
+          {
+            "name": "V",
+            "type": 14
+          },
+          {
+            "name": "KeyType",
+            "type": 19
+          }
+        ],
+        "def": {
+          "composite": {}
+        }
+      }
+    },
+    {
+      "id": 19,
+      "type": {
+        "path": [
+          "ink_storage_traits",
+          "impls",
+          "ResolverKey"
+        ],
+        "params": [
+          {
+            "name": "L",
+            "type": 11
+          },
+          {
+            "name": "R",
+            "type": 20
+          }
+        ],
+        "def": {
+          "composite": {}
+        }
+      }
+    },
+    {
+      "id": 20,
+      "type": {
+        "path": [
+          "ink_storage_traits",
+          "impls",
+          "ManualKey"
+        ],
+        "params": [
+          {
+            "name": "ParentKey",
+            "type": 13
+          }
+        ],
+        "def": {
+          "composite": {}
+        }
+      }
+    },
+    {
+      "id": 21,
+      "type": {
+        "def": {
+          "sequence": {
+            "type": 1
+          }
+        }
+      }
+    },
+    {
+      "id": 22,
+      "type": {
+        "path": [
+          "ink_storage",
+          "lazy",
+          "mapping",
+          "Mapping"
+        ],
+        "params": [
+          {
+            "name": "K",
+            "type": 0
+          },
+          {
+            "name": "V",
+            "type": 21
+          },
+          {
+            "name": "KeyType",
+            "type": 23
+          }
+        ],
+        "def": {
+          "composite": {}
+        }
+      }
+    },
+    {
+      "id": 23,
+      "type": {
+        "path": [
+          "ink_storage_traits",
+          "impls",
+          "ResolverKey"
+        ],
+        "params": [
+          {
+            "name": "L",
+            "type": 11
+          },
+          {
+            "name": "R",
+            "type": 24
+          }
+        ],
+        "def": {
+          "composite": {}
+        }
+      }
+    },
+    {
+      "id": 24,
+      "type": {
+        "path": [
+          "ink_storage_traits",
+          "impls",
+          "ManualKey"
+        ],
+        "params": [
+          {
+            "name": "ParentKey",
+            "type": 13
+          }
+        ],
+        "def": {
+          "composite": {}
+        }
+      }
+    },
+    {
+      "id": 25,
+      "type": {
+        "path": [
+          "ink_storage",
+          "lazy",
+          "mapping",
+          "Mapping"
+        ],
+        "params": [
+          {
+            "name": "K",
+            "type": 26
+          },
+          {
+            "name": "V",
+            "type": 7
+          },
+          {
+            "name": "KeyType",
+            "type": 27
+          }
+        ],
+        "def": {
+          "composite": {}
+        }
+      }
+    },
+    {
+      "id": 26,
+      "type": {
+        "def": {
+          "tuple": [
+            0,
+            1
+          ]
+        }
+      }
+    },
+    {
+      "id": 27,
+      "type": {
+        "path": [
+          "ink_storage_traits",
+          "impls",
+          "ResolverKey"
+        ],
+        "params": [
+          {
+            "name": "L",
+            "type": 11
+          },
+          {
+            "name": "R",
+            "type": 28
+          }
+        ],
+        "def": {
+          "composite": {}
+        }
+      }
+    },
+    {
+      "id": 28,
+      "type": {
+        "path": [
+          "ink_storage_traits",
+          "impls",
+          "ManualKey"
+        ],
+        "params": [
+          {
+            "name": "ParentKey",
+            "type": 13
+          }
+        ],
+        "def": {
+          "composite": {}
+        }
+      }
+    },
+    {
+      "id": 29,
+      "type": {
+        "path": [
+          "ink_storage",
+          "lazy",
+          "mapping",
+          "Mapping"
+        ],
+        "params": [
+          {
+            "name": "K",
+            "type": 30
+          },
+          {
+            "name": "V",
+            "type": 1
+          },
+          {
+            "name": "KeyType",
+            "type": 33
+          }
+        ],
+        "def": {
+          "composite": {}
+        }
+      }
+    },
+    {
+      "id": 30,
+      "type": {
+        "path": [
+          "psp34",
+          "data",
+          "Id"
+        ],
+        "def": {
+          "variant": {
+            "variants": [
+              {
+                "name": "U8",
+                "fields": [
+                  {
+                    "type": 3,
+                    "typeName": "u8"
+                  }
+                ],
+                "index": 0
+              },
+              {
+                "name": "U16",
+                "fields": [
+                  {
+                    "type": 31,
+                    "typeName": "u16"
+                  }
+                ],
+                "index": 1
+              },
+              {
+                "name": "U32",
+                "fields": [
+                  {
+                    "type": 0,
+                    "typeName": "u32"
+                  }
+                ],
+                "index": 2
+              },
+              {
+                "name": "U64",
+                "fields": [
+                  {
+                    "type": 5,
+                    "typeName": "u64"
+                  }
+                ],
+                "index": 3
+              },
+              {
+                "name": "U128",
+                "fields": [
+                  {
+                    "type": 6,
+                    "typeName": "u128"
+                  }
+                ],
+                "index": 4
+              },
+              {
+                "name": "Bytes",
+                "fields": [
+                  {
+                    "type": 32,
+                    "typeName": "Vec<u8>"
+                  }
+                ],
+                "index": 5
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 31,
+      "type": {
+        "def": {
+          "primitive": "u16"
+        }
+      }
+    },
+    {
+      "id": 32,
+      "type": {
+        "def": {
+          "sequence": {
+            "type": 3
+          }
+        }
+      }
+    },
+    {
+      "id": 33,
+      "type": {
+        "path": [
+          "ink_storage_traits",
+          "impls",
+          "ResolverKey"
+        ],
+        "params": [
+          {
+            "name": "L",
+            "type": 11
+          },
+          {
+            "name": "R",
+            "type": 34
+          }
+        ],
+        "def": {
+          "composite": {}
+        }
+      }
+    },
+    {
+      "id": 34,
+      "type": {
+        "path": [
+          "ink_storage_traits",
+          "impls",
+          "ManualKey"
+        ],
+        "params": [
+          {
+            "name": "ParentKey",
+            "type": 13
+          }
+        ],
+        "def": {
+          "composite": {}
+        }
+      }
+    },
+    {
+      "id": 35,
+      "type": {
+        "path": [
+          "ink_storage",
+          "lazy",
+          "mapping",
+          "Mapping"
+        ],
+        "params": [
+          {
+            "name": "K",
+            "type": 36
+          },
+          {
+            "name": "V",
+            "type": 13
+          },
+          {
+            "name": "KeyType",
+            "type": 38
+          }
+        ],
+        "def": {
+          "composite": {}
+        }
+      }
+    },
+    {
+      "id": 36,
+      "type": {
+        "def": {
+          "tuple": [
+            1,
+            1,
+            37
+          ]
+        }
+      }
+    },
+    {
+      "id": 37,
+      "type": {
+        "path": [
+          "Option"
+        ],
+        "params": [
+          {
+            "name": "T",
+            "type": 30
+          }
+        ],
+        "def": {
+          "variant": {
+            "variants": [
+              {
+                "name": "None",
+                "index": 0
+              },
+              {
+                "name": "Some",
+                "fields": [
+                  {
+                    "type": 30
+                  }
+                ],
+                "index": 1
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 38,
+      "type": {
+        "path": [
+          "ink_storage_traits",
+          "impls",
+          "ResolverKey"
+        ],
+        "params": [
+          {
+            "name": "L",
+            "type": 11
+          },
+          {
+            "name": "R",
+            "type": 39
+          }
+        ],
+        "def": {
+          "composite": {}
+        }
+      }
+    },
+    {
+      "id": 39,
+      "type": {
+        "path": [
+          "ink_storage_traits",
+          "impls",
+          "ManualKey"
+        ],
+        "params": [
+          {
+            "name": "ParentKey",
+            "type": 13
+          }
+        ],
+        "def": {
+          "composite": {}
+        }
+      }
+    },
+    {
+      "id": 40,
+      "type": {
+        "path": [
+          "ink_storage",
+          "lazy",
+          "mapping",
+          "Mapping"
+        ],
+        "params": [
+          {
+            "name": "K",
+            "type": 1
+          },
+          {
+            "name": "V",
+            "type": 0
+          },
+          {
+            "name": "KeyType",
+            "type": 41
+          }
+        ],
+        "def": {
+          "composite": {}
+        }
+      }
+    },
+    {
+      "id": 41,
+      "type": {
+        "path": [
+          "ink_storage_traits",
+          "impls",
+          "ResolverKey"
+        ],
+        "params": [
+          {
+            "name": "L",
+            "type": 11
+          },
+          {
+            "name": "R",
+            "type": 42
+          }
+        ],
+        "def": {
+          "composite": {}
+        }
+      }
+    },
+    {
+      "id": 42,
+      "type": {
+        "path": [
+          "ink_storage_traits",
+          "impls",
+          "ManualKey"
+        ],
+        "params": [
+          {
+            "name": "ParentKey",
+            "type": 13
+          }
+        ],
+        "def": {
+          "composite": {}
+        }
+      }
+    },
+    {
+      "id": 43,
+      "type": {
+        "path": [
+          "ink_storage",
+          "lazy",
+          "mapping",
+          "Mapping"
+        ],
+        "params": [
+          {
+            "name": "K",
+            "type": 30
+          },
+          {
+            "name": "V",
+            "type": 44
+          },
+          {
+            "name": "KeyType",
+            "type": 45
+          }
+        ],
+        "def": {
+          "composite": {}
+        }
+      }
+    },
+    {
+      "id": 44,
+      "type": {
+        "path": [
+          "course_management",
+          "eduverse",
+          "CertificateInfo"
+        ],
+        "def": {
+          "composite": {
+            "fields": [
+              {
+                "name": "course_id",
+                "type": 0,
+                "typeName": "u32"
+              },
+              {
+                "name": "course_title",
+                "type": 4,
+                "typeName": "String"
+              },
+              {
+                "name": "student",
+                "type": 1,
+                "typeName": "AccountId"
+              },
+              {
+                "name": "completion_date",
+                "type": 5,
+                "typeName": "Timestamp"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 45,
+      "type": {
+        "path": [
+          "ink_storage_traits",
+          "impls",
+          "ResolverKey"
+        ],
+        "params": [
+          {
+            "name": "L",
+            "type": 11
+          },
+          {
+            "name": "R",
+            "type": 46
+          }
+        ],
+        "def": {
+          "composite": {}
+        }
+      }
+    },
+    {
+      "id": 46,
+      "type": {
+        "path": [
+          "ink_storage_traits",
+          "impls",
+          "ManualKey"
+        ],
+        "params": [
+          {
+            "name": "ParentKey",
+            "type": 13
+          }
+        ],
+        "def": {
+          "composite": {}
+        }
+      }
+    },
+    {
+      "id": 47,
+      "type": {
+        "path": [
+          "ink_storage",
+          "lazy",
+          "mapping",
+          "Mapping"
+        ],
+        "params": [
+          {
+            "name": "K",
+            "type": 48
+          },
+          {
+            "name": "V",
+            "type": 32
+          },
+          {
+            "name": "KeyType",
+            "type": 49
+          }
+        ],
+        "def": {
+          "composite": {}
+        }
+      }
+    },
+    {
+      "id": 48,
+      "type": {
+        "def": {
+          "tuple": [
+            30,
+            32
+          ]
+        }
+      }
+    },
+    {
+      "id": 49,
+      "type": {
+        "path": [
+          "ink_storage_traits",
+          "impls",
+          "ResolverKey"
+        ],
+        "params": [
+          {
+            "name": "L",
+            "type": 11
+          },
+          {
+            "name": "R",
+            "type": 50
+          }
+        ],
+        "def": {
+          "composite": {}
+        }
+      }
+    },
+    {
+      "id": 50,
+      "type": {
+        "path": [
+          "ink_storage_traits",
+          "impls",
+          "ManualKey"
+        ],
+        "params": [
+          {
+            "name": "ParentKey",
+            "type": 13
+          }
+        ],
+        "def": {
+          "composite": {}
+        }
+      }
+    },
+    {
+      "id": 51,
+      "type": {
+        "def": {
+          "sequence": {
+            "type": 30
+          }
+        }
+      }
+    },
+    {
+      "id": 52,
+      "type": {
+        "path": [
+          "ink_storage",
+          "lazy",
+          "mapping",
+          "Mapping"
+        ],
+        "params": [
+          {
+            "name": "K",
+            "type": 1
+          },
+          {
+            "name": "V",
+            "type": 51
+          },
+          {
+            "name": "KeyType",
+            "type": 53
+          }
+        ],
+        "def": {
+          "composite": {}
+        }
+      }
+    },
+    {
+      "id": 53,
+      "type": {
+        "path": [
+          "ink_storage_traits",
+          "impls",
+          "ResolverKey"
+        ],
+        "params": [
+          {
+            "name": "L",
+            "type": 11
+          },
+          {
+            "name": "R",
+            "type": 54
+          }
+        ],
+        "def": {
+          "composite": {}
+        }
+      }
+    },
+    {
+      "id": 54,
+      "type": {
+        "path": [
+          "ink_storage_traits",
+          "impls",
+          "ManualKey"
+        ],
+        "params": [
+          {
+            "name": "ParentKey",
+            "type": 13
+          }
+        ],
+        "def": {
+          "composite": {}
+        }
+      }
+    },
+    {
+      "id": 55,
+      "type": {
+        "path": [
+          "course_management",
+          "eduverse",
+          "Eduverse"
+        ],
+        "def": {
+          "composite": {
+            "fields": [
+              {
+                "name": "course_counter",
+                "type": 0,
+                "typeName": "<u32 as::ink::storage::traits::AutoStorableHint<::ink::storage\n::traits::ManualKey<2561085401u32, ()>,>>::Type"
+              },
+              {
+                "name": "courses",
+                "type": 8,
+                "typeName": "<Mapping<u32, Course> as::ink::storage::traits::AutoStorableHint<\n::ink::storage::traits::ManualKey<426687947u32, ()>,>>::Type"
+              },
+              {
+                "name": "student_enrollments",
+                "type": 15,
+                "typeName": "<Mapping<AccountId, Vec<u32>> as::ink::storage::traits::\nAutoStorableHint<::ink::storage::traits::ManualKey<1639059346u32,\n()>,>>::Type"
+              },
+              {
+                "name": "teacher_courses",
+                "type": 18,
+                "typeName": "<Mapping<AccountId, Vec<u32>> as::ink::storage::traits::\nAutoStorableHint<::ink::storage::traits::ManualKey<1104045018u32,\n()>,>>::Type"
+              },
+              {
+                "name": "course_students",
+                "type": 22,
+                "typeName": "<Mapping<u32, Vec<AccountId>> as::ink::storage::traits::\nAutoStorableHint<::ink::storage::traits::ManualKey<1588938612u32,\n()>,>>::Type"
+              },
+              {
+                "name": "course_completions",
+                "type": 25,
+                "typeName": "<Mapping<(u32, AccountId), bool> as::ink::storage::traits::\nAutoStorableHint<::ink::storage::traits::ManualKey<3439199889u32,\n()>,>>::Type"
+              },
+              {
+                "name": "owner",
+                "type": 1,
+                "typeName": "<AccountId as::ink::storage::traits::AutoStorableHint<::ink::\nstorage::traits::ManualKey<1587286708u32, ()>,>>::Type"
+              },
+              {
+                "name": "data",
+                "type": 56,
+                "typeName": "<PSP34Data as::ink::storage::traits::AutoStorableHint<::ink::\nstorage::traits::ManualKey<2614054250u32, ()>,>>::Type"
+              },
+              {
+                "name": "certificate_info",
+                "type": 43,
+                "typeName": "<Mapping<Id, CertificateInfo> as::ink::storage::traits::\nAutoStorableHint<::ink::storage::traits::ManualKey<1744406650u32,\n()>,>>::Type"
+              },
+              {
+                "name": "attributes",
+                "type": 47,
+                "typeName": "<Mapping<(psp34::Id, Vec<u8>), Vec<u8>> as::ink::storage::\ntraits::AutoStorableHint<::ink::storage::traits::ManualKey<\n1041247098u32, ()>,>>::Type"
+              },
+              {
+                "name": "student_certificates",
+                "type": 52,
+                "typeName": "<Mapping<AccountId, Vec<psp34::Id>> as::ink::storage::traits::\nAutoStorableHint<::ink::storage::traits::ManualKey<3576605447u32,\n()>,>>::Type"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 56,
+      "type": {
+        "path": [
+          "psp34",
+          "data",
+          "PSP34Data"
+        ],
+        "def": {
+          "composite": {
+            "fields": [
+              {
+                "name": "token_owner",
+                "type": 29,
+                "typeName": "<Mapping<Id, AccountId> as::ink::storage::traits::AutoStorableHint\n<::ink::storage::traits::ManualKey<1659954590u32, ()>,>>::Type"
+              },
+              {
+                "name": "operator_approvals",
+                "type": 35,
+                "typeName": "<Mapping<(AccountId, AccountId, Option<Id>), ()> as::ink::storage\n::traits::AutoStorableHint<::ink::storage::traits::ManualKey<\n3716310839u32, ()>,>>::Type"
+              },
+              {
+                "name": "balance",
+                "type": 57,
+                "typeName": "<Balances as::ink::storage::traits::AutoStorableHint<::ink::\nstorage::traits::ManualKey<2320573138u32, ()>,>>::Type"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 57,
+      "type": {
+        "path": [
+          "psp34",
+          "balances",
+          "balance_manager",
+          "Balances"
+        ],
+        "def": {
+          "composite": {
+            "fields": [
+              {
+                "name": "owned_tokens_count",
+                "type": 40,
+                "typeName": "<Mapping<AccountId, u32> as::ink::storage::traits::\nAutoStorableHint<::ink::storage::traits::ManualKey<362110607u32, ()\n>,>>::Type"
+              },
+              {
+                "name": "total_supply",
+                "type": 6,
+                "typeName": "<u128 as::ink::storage::traits::AutoStorableHint<::ink::storage\n::traits::ManualKey<2246415571u32, ()>,>>::Type"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 58,
+      "type": {
+        "path": [
+          "Result"
+        ],
+        "params": [
+          {
+            "name": "T",
+            "type": 13
+          },
+          {
+            "name": "E",
+            "type": 59
+          }
+        ],
+        "def": {
+          "variant": {
+            "variants": [
+              {
+                "name": "Ok",
+                "fields": [
+                  {
+                    "type": 13
+                  }
+                ],
+                "index": 0
+              },
+              {
+                "name": "Err",
+                "fields": [
+                  {
+                    "type": 59
+                  }
+                ],
+                "index": 1
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 59,
+      "type": {
+        "path": [
+          "ink_primitives",
+          "LangError"
+        ],
+        "def": {
+          "variant": {
+            "variants": [
+              {
+                "name": "CouldNotReadInput",
+                "index": 1
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 60,
+      "type": {
+        "path": [
+          "Result"
+        ],
+        "params": [
+          {
+            "name": "T",
+            "type": 61
+          },
+          {
+            "name": "E",
+            "type": 59
+          }
+        ],
+        "def": {
+          "variant": {
+            "variants": [
+              {
+                "name": "Ok",
+                "fields": [
+                  {
+                    "type": 61
+                  }
+                ],
+                "index": 0
+              },
+              {
+                "name": "Err",
+                "fields": [
+                  {
+                    "type": 59
+                  }
+                ],
+                "index": 1
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 61,
+      "type": {
+        "path": [
+          "Result"
+        ],
+        "params": [
+          {
+            "name": "T",
+            "type": 0
+          },
+          {
+            "name": "E",
+            "type": 62
+          }
+        ],
+        "def": {
+          "variant": {
+            "variants": [
+              {
+                "name": "Ok",
+                "fields": [
+                  {
+                    "type": 0
+                  }
+                ],
+                "index": 0
+              },
+              {
+                "name": "Err",
+                "fields": [
+                  {
+                    "type": 62
+                  }
+                ],
+                "index": 1
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 62,
+      "type": {
+        "path": [
+          "course_management",
+          "eduverse",
+          "Error"
+        ],
+        "def": {
+          "variant": {
+            "variants": [
+              {
+                "name": "CourseNotActive",
+                "index": 0
+              },
+              {
+                "name": "NotOwner",
+                "index": 1
+              },
+              {
+                "name": "NotTeacher",
+                "index": 2
+              },
+              {
+                "name": "NotStudent",
+                "index": 3
+              },
+              {
+                "name": "CourseNotFound",
+                "index": 4
+              },
+              {
+                "name": "CourseInactive",
+                "index": 5
+              },
+              {
+                "name": "CourseFull",
+                "index": 6
+              },
+              {
+                "name": "CourseNotStarted",
+                "index": 7
+              },
+              {
+                "name": "CourseEnded",
+                "index": 8
+              },
+              {
+                "name": "AlreadyEnrolled",
+                "index": 9
+              },
+              {
+                "name": "NotEnrolled",
+                "index": 10
+              },
+              {
+                "name": "InsufficientPayment",
+                "index": 11
+              },
+              {
+                "name": "InvalidInput",
+                "index": 12
+              },
+              {
+                "name": "InvalidTime",
+                "index": 13
+              },
+              {
+                "name": "AlreadyCompleted",
+                "index": 14
+              },
+              {
+                "name": "CertificateNotFound",
+                "index": 15
+              },
+              {
+                "name": "TransferError",
+                "index": 16
+              },
+              {
+                "name": "PSP34Error",
+                "fields": [
+                  {
+                    "type": 63,
+                    "typeName": "PSP34Error"
+                  }
+                ],
+                "index": 17
+              },
+              {
+                "name": "CourseIsFull",
+                "index": 18
+              },
+              {
+                "name": "CourseInProgress",
+                "index": 19
+              },
+              {
+                "name": "Unauthorized",
+                "index": 20
+              },
+              {
+                "name": "NFTMintingFailed",
+                "index": 21
+              },
+              {
+                "name": "PaymentFailed",
+                "index": 22
+              },
+              {
+                "name": "RefundPeriodEnded",
+                "index": 23
+              },
+              {
+                "name": "InvalidFeePercentage",
+                "index": 24
+              },
+              {
+                "name": "NoRefundAvailable",
+                "index": 25
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 63,
+      "type": {
+        "path": [
+          "psp34",
+          "errors",
+          "PSP34Error"
+        ],
+        "def": {
+          "variant": {
+            "variants": [
+              {
+                "name": "Custom",
+                "fields": [
+                  {
+                    "type": 4,
+                    "typeName": "String"
+                  }
+                ],
+                "index": 0
+              },
+              {
+                "name": "SelfApprove",
+                "index": 1
+              },
+              {
+                "name": "NotApproved",
+                "index": 2
+              },
+              {
+                "name": "TokenExists",
+                "index": 3
+              },
+              {
+                "name": "TokenNotExists",
+                "index": 4
+              },
+              {
+                "name": "SafeTransferCheckFailed",
+                "fields": [
+                  {
+                    "type": 4,
+                    "typeName": "String"
+                  }
+                ],
+                "index": 5
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 64,
+      "type": {
+        "path": [
+          "Option"
+        ],
+        "params": [
+          {
+            "name": "T",
+            "type": 4
+          }
+        ],
+        "def": {
+          "variant": {
+            "variants": [
+              {
+                "name": "None",
+                "index": 0
+              },
+              {
+                "name": "Some",
+                "fields": [
+                  {
+                    "type": 4
+                  }
+                ],
+                "index": 1
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 65,
+      "type": {
+        "path": [
+          "Option"
+        ],
+        "params": [
+          {
+            "name": "T",
+            "type": 0
+          }
+        ],
+        "def": {
+          "variant": {
+            "variants": [
+              {
+                "name": "None",
+                "index": 0
+              },
+              {
+                "name": "Some",
+                "fields": [
+                  {
+                    "type": 0
+                  }
+                ],
+                "index": 1
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 66,
+      "type": {
+        "path": [
+          "Option"
+        ],
+        "params": [
+          {
+            "name": "T",
+            "type": 6
+          }
+        ],
+        "def": {
+          "variant": {
+            "variants": [
+              {
+                "name": "None",
+                "index": 0
+              },
+              {
+                "name": "Some",
+                "fields": [
+                  {
+                    "type": 6
+                  }
+                ],
+                "index": 1
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 67,
+      "type": {
+        "path": [
+          "Option"
+        ],
+        "params": [
+          {
+            "name": "T",
+            "type": 7
+          }
+        ],
+        "def": {
+          "variant": {
+            "variants": [
+              {
+                "name": "None",
+                "index": 0
+              },
+              {
+                "name": "Some",
+                "fields": [
+                  {
+                    "type": 7
+                  }
+                ],
+                "index": 1
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 68,
+      "type": {
+        "path": [
+          "Result"
+        ],
+        "params": [
+          {
+            "name": "T",
+            "type": 69
+          },
+          {
+            "name": "E",
+            "type": 59
+          }
+        ],
+        "def": {
+          "variant": {
+            "variants": [
+              {
+                "name": "Ok",
+                "fields": [
+                  {
+                    "type": 69
+                  }
+                ],
+                "index": 0
+              },
+              {
+                "name": "Err",
+                "fields": [
+                  {
+                    "type": 59
+                  }
+                ],
+                "index": 1
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 69,
+      "type": {
+        "path": [
+          "Result"
+        ],
+        "params": [
+          {
+            "name": "T",
+            "type": 13
+          },
+          {
+            "name": "E",
+            "type": 62
+          }
+        ],
+        "def": {
+          "variant": {
+            "variants": [
+              {
+                "name": "Ok",
+                "fields": [
+                  {
+                    "type": 13
+                  }
+                ],
+                "index": 0
+              },
+              {
+                "name": "Err",
+                "fields": [
+                  {
+                    "type": 62
+                  }
+                ],
+                "index": 1
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 70,
+      "type": {
+        "path": [
+          "Result"
+        ],
+        "params": [
+          {
+            "name": "T",
+            "type": 7
+          },
+          {
+            "name": "E",
+            "type": 59
+          }
+        ],
+        "def": {
+          "variant": {
+            "variants": [
+              {
+                "name": "Ok",
+                "fields": [
+                  {
+                    "type": 7
+                  }
+                ],
+                "index": 0
+              },
+              {
+                "name": "Err",
+                "fields": [
+                  {
+                    "type": 59
+                  }
+                ],
+                "index": 1
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 71,
+      "type": {
+        "path": [
+          "Result"
+        ],
+        "params": [
+          {
+            "name": "T",
+            "type": 72
+          },
+          {
+            "name": "E",
+            "type": 59
+          }
+        ],
+        "def": {
+          "variant": {
+            "variants": [
+              {
+                "name": "Ok",
+                "fields": [
+                  {
+                    "type": 72
+                  }
+                ],
+                "index": 0
+              },
+              {
+                "name": "Err",
+                "fields": [
+                  {
+                    "type": 59
+                  }
+                ],
+                "index": 1
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 72,
+      "type": {
+        "path": [
+          "Option"
+        ],
+        "params": [
+          {
+            "name": "T",
+            "type": 9
+          }
+        ],
+        "def": {
+          "variant": {
+            "variants": [
+              {
+                "name": "None",
+                "index": 0
+              },
+              {
+                "name": "Some",
+                "fields": [
+                  {
+                    "type": 9
+                  }
+                ],
+                "index": 1
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 73,
+      "type": {
+        "path": [
+          "Result"
+        ],
+        "params": [
+          {
+            "name": "T",
+            "type": 14
+          },
+          {
+            "name": "E",
+            "type": 59
+          }
+        ],
+        "def": {
+          "variant": {
+            "variants": [
+              {
+                "name": "Ok",
+                "fields": [
+                  {
+                    "type": 14
+                  }
+                ],
+                "index": 0
+              },
+              {
+                "name": "Err",
+                "fields": [
+                  {
+                    "type": 59
+                  }
+                ],
+                "index": 1
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 74,
+      "type": {
+        "path": [
+          "Result"
+        ],
+        "params": [
+          {
+            "name": "T",
+            "type": 75
+          },
+          {
+            "name": "E",
+            "type": 59
+          }
+        ],
+        "def": {
+          "variant": {
+            "variants": [
+              {
+                "name": "Ok",
+                "fields": [
+                  {
+                    "type": 75
+                  }
+                ],
+                "index": 0
+              },
+              {
+                "name": "Err",
+                "fields": [
+                  {
+                    "type": 59
+                  }
+                ],
+                "index": 1
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 75,
+      "type": {
+        "path": [
+          "Option"
+        ],
+        "params": [
+          {
+            "name": "T",
+            "type": 32
+          }
+        ],
+        "def": {
+          "variant": {
+            "variants": [
+              {
+                "name": "None",
+                "index": 0
+              },
+              {
+                "name": "Some",
+                "fields": [
+                  {
+                    "type": 32
+                  }
+                ],
+                "index": 1
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 76,
+      "type": {
+        "path": [
+          "Result"
+        ],
+        "params": [
+          {
+            "name": "T",
+            "type": 51
+          },
+          {
+            "name": "E",
+            "type": 59
+          }
+        ],
+        "def": {
+          "variant": {
+            "variants": [
+              {
+                "name": "Ok",
+                "fields": [
+                  {
+                    "type": 51
+                  }
+                ],
+                "index": 0
+              },
+              {
+                "name": "Err",
+                "fields": [
+                  {
+                    "type": 59
+                  }
+                ],
+                "index": 1
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 77,
+      "type": {
+        "path": [
+          "Result"
+        ],
+        "params": [
+          {
+            "name": "T",
+            "type": 21
+          },
+          {
+            "name": "E",
+            "type": 59
+          }
+        ],
+        "def": {
+          "variant": {
+            "variants": [
+              {
+                "name": "Ok",
+                "fields": [
+                  {
+                    "type": 21
+                  }
+                ],
+                "index": 0
+              },
+              {
+                "name": "Err",
+                "fields": [
+                  {
+                    "type": 59
+                  }
+                ],
+                "index": 1
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 78,
+      "type": {
+        "path": [
+          "Result"
+        ],
+        "params": [
+          {
+            "name": "T",
+            "type": 79
+          },
+          {
+            "name": "E",
+            "type": 59
+          }
+        ],
+        "def": {
+          "variant": {
+            "variants": [
+              {
+                "name": "Ok",
+                "fields": [
+                  {
+                    "type": 79
+                  }
+                ],
+                "index": 0
+              },
+              {
+                "name": "Err",
+                "fields": [
+                  {
+                    "type": 59
+                  }
+                ],
+                "index": 1
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 79,
+      "type": {
+        "def": {
+          "sequence": {
+            "type": 9
+          }
+        }
+      }
+    },
+    {
+      "id": 80,
+      "type": {
+        "path": [
+          "Result"
+        ],
+        "params": [
+          {
+            "name": "T",
+            "type": 81
+          },
+          {
+            "name": "E",
+            "type": 59
+          }
+        ],
+        "def": {
+          "variant": {
+            "variants": [
+              {
+                "name": "Ok",
+                "fields": [
+                  {
+                    "type": 81
+                  }
+                ],
+                "index": 0
+              },
+              {
+                "name": "Err",
+                "fields": [
+                  {
+                    "type": 59
+                  }
+                ],
+                "index": 1
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 81,
+      "type": {
+        "path": [
+          "Result"
+        ],
+        "params": [
+          {
+            "name": "T",
+            "type": 44
+          },
+          {
+            "name": "E",
+            "type": 62
+          }
+        ],
+        "def": {
+          "variant": {
+            "variants": [
+              {
+                "name": "Ok",
+                "fields": [
+                  {
+                    "type": 44
+                  }
+                ],
+                "index": 0
+              },
+              {
+                "name": "Err",
+                "fields": [
+                  {
+                    "type": 62
+                  }
+                ],
+                "index": 1
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 82,
+      "type": {
+        "path": [
+          "Result"
+        ],
+        "params": [
+          {
+            "name": "T",
+            "type": 30
+          },
+          {
+            "name": "E",
+            "type": 59
+          }
+        ],
+        "def": {
+          "variant": {
+            "variants": [
+              {
+                "name": "Ok",
+                "fields": [
+                  {
+                    "type": 30
+                  }
+                ],
+                "index": 0
+              },
+              {
+                "name": "Err",
+                "fields": [
+                  {
+                    "type": 59
+                  }
+                ],
+                "index": 1
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 83,
+      "type": {
+        "path": [
+          "Result"
+        ],
+        "params": [
+          {
+            "name": "T",
+            "type": 0
+          },
+          {
+            "name": "E",
+            "type": 59
+          }
+        ],
+        "def": {
+          "variant": {
+            "variants": [
+              {
+                "name": "Ok",
+                "fields": [
+                  {
+                    "type": 0
+                  }
+                ],
+                "index": 0
+              },
+              {
+                "name": "Err",
+                "fields": [
+                  {
+                    "type": 59
+                  }
+                ],
+                "index": 1
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 84,
+      "type": {
+        "path": [
+          "Result"
+        ],
+        "params": [
+          {
+            "name": "T",
+            "type": 85
+          },
+          {
+            "name": "E",
+            "type": 59
+          }
+        ],
+        "def": {
+          "variant": {
+            "variants": [
+              {
+                "name": "Ok",
+                "fields": [
+                  {
+                    "type": 85
+                  }
+                ],
+                "index": 0
+              },
+              {
+                "name": "Err",
+                "fields": [
+                  {
+                    "type": 59
+                  }
+                ],
+                "index": 1
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 85,
+      "type": {
+        "path": [
+          "Option"
+        ],
+        "params": [
+          {
+            "name": "T",
+            "type": 1
+          }
+        ],
+        "def": {
+          "variant": {
+            "variants": [
+              {
+                "name": "None",
+                "index": 0
+              },
+              {
+                "name": "Some",
+                "fields": [
+                  {
+                    "type": 1
+                  }
+                ],
+                "index": 1
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 86,
+      "type": {
+        "path": [
+          "Result"
+        ],
+        "params": [
+          {
+            "name": "T",
+            "type": 87
+          },
+          {
+            "name": "E",
+            "type": 59
+          }
+        ],
+        "def": {
+          "variant": {
+            "variants": [
+              {
+                "name": "Ok",
+                "fields": [
+                  {
+                    "type": 87
+                  }
+                ],
+                "index": 0
+              },
+              {
+                "name": "Err",
+                "fields": [
+                  {
+                    "type": 59
+                  }
+                ],
+                "index": 1
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 87,
+      "type": {
+        "path": [
+          "Result"
+        ],
+        "params": [
+          {
+            "name": "T",
+            "type": 13
+          },
+          {
+            "name": "E",
+            "type": 63
+          }
+        ],
+        "def": {
+          "variant": {
+            "variants": [
+              {
+                "name": "Ok",
+                "fields": [
+                  {
+                    "type": 13
+                  }
+                ],
+                "index": 0
+              },
+              {
+                "name": "Err",
+                "fields": [
+                  {
+                    "type": 63
+                  }
+                ],
+                "index": 1
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 88,
+      "type": {
+        "path": [
+          "Result"
+        ],
+        "params": [
+          {
+            "name": "T",
+            "type": 6
+          },
+          {
+            "name": "E",
+            "type": 59
+          }
+        ],
+        "def": {
+          "variant": {
+            "variants": [
+              {
+                "name": "Ok",
+                "fields": [
+                  {
+                    "type": 6
+                  }
+                ],
+                "index": 0
+              },
+              {
+                "name": "Err",
+                "fields": [
+                  {
+                    "type": 59
+                  }
+                ],
+                "index": 1
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 89,
+      "type": {
+        "path": [
+          "ink_primitives",
+          "types",
+          "Hash"
+        ],
+        "def": {
+          "composite": {
+            "fields": [
+              {
+                "type": 2,
+                "typeName": "[u8; 32]"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 90,
+      "type": {
+        "path": [
+          "ink_env",
+          "types",
+          "NoChainExtension"
+        ],
+        "def": {
+          "variant": {}
+        }
+      }
+    }
+  ],
+  "storage": {
+    "root": {
+      "root_key": "0x00000000",
+      "layout": {
+        "struct": {
+          "name": "Eduverse",
+          "fields": [
+            {
+              "name": "course_counter",
+              "layout": {
+                "leaf": {
+                  "key": "0x00000000",
+                  "ty": 0
+                }
+              }
+            },
+            {
+              "name": "courses",
+              "layout": {
+                "root": {
+                  "root_key": "0xcbbd6e19",
+                  "layout": {
+                    "struct": {
+                      "name": "Course",
+                      "fields": [
+                        {
+                          "name": "id",
+                          "layout": {
+                            "leaf": {
+                              "key": "0xcbbd6e19",
+                              "ty": 0
+                            }
+                          }
+                        },
+                        {
+                          "name": "teacher",
+                          "layout": {
+                            "leaf": {
+                              "key": "0xcbbd6e19",
+                              "ty": 1
+                            }
+                          }
+                        },
+                        {
+                          "name": "title",
+                          "layout": {
+                            "leaf": {
+                              "key": "0xcbbd6e19",
+                              "ty": 4
+                            }
+                          }
+                        },
+                        {
+                          "name": "description",
+                          "layout": {
+                            "leaf": {
+                              "key": "0xcbbd6e19",
+                              "ty": 4
+                            }
+                          }
+                        },
+                        {
+                          "name": "max_students",
+                          "layout": {
+                            "leaf": {
+                              "key": "0xcbbd6e19",
+                              "ty": 0
+                            }
+                          }
+                        },
+                        {
+                          "name": "enrolled_count",
+                          "layout": {
+                            "leaf": {
+                              "key": "0xcbbd6e19",
+                              "ty": 0
+                            }
+                          }
+                        },
+                        {
+                          "name": "start_time",
+                          "layout": {
+                            "leaf": {
+                              "key": "0xcbbd6e19",
+                              "ty": 5
+                            }
+                          }
+                        },
+                        {
+                          "name": "end_time",
+                          "layout": {
+                            "leaf": {
+                              "key": "0xcbbd6e19",
+                              "ty": 5
+                            }
+                          }
+                        },
+                        {
+                          "name": "price",
+                          "layout": {
+                            "leaf": {
+                              "key": "0xcbbd6e19",
+                              "ty": 6
+                            }
+                          }
+                        },
+                        {
+                          "name": "active",
+                          "layout": {
+                            "leaf": {
+                              "key": "0xcbbd6e19",
+                              "ty": 7
+                            }
+                          }
+                        },
+                        {
+                          "name": "metadata_hash",
+                          "layout": {
+                            "leaf": {
+                              "key": "0xcbbd6e19",
+                              "ty": 4
+                            }
+                          }
+                        },
+                        {
+                          "name": "created_at",
+                          "layout": {
+                            "leaf": {
+                              "key": "0xcbbd6e19",
+                              "ty": 5
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "ty": 8
+                }
+              }
+            },
+            {
+              "name": "student_enrollments",
+              "layout": {
+                "root": {
+                  "root_key": "0x920fb261",
+                  "layout": {
+                    "leaf": {
+                      "key": "0x920fb261",
+                      "ty": 14
+                    }
+                  },
+                  "ty": 15
+                }
+              }
+            },
+            {
+              "name": "teacher_courses",
+              "layout": {
+                "root": {
+                  "root_key": "0xda63ce41",
+                  "layout": {
+                    "leaf": {
+                      "key": "0xda63ce41",
+                      "ty": 14
+                    }
+                  },
+                  "ty": 18
+                }
+              }
+            },
+            {
+              "name": "course_students",
+              "layout": {
+                "root": {
+                  "root_key": "0x7447b55e",
+                  "layout": {
+                    "leaf": {
+                      "key": "0x7447b55e",
+                      "ty": 21
+                    }
+                  },
+                  "ty": 22
+                }
+              }
+            },
+            {
+              "name": "course_completions",
+              "layout": {
+                "root": {
+                  "root_key": "0x9106fecc",
+                  "layout": {
+                    "leaf": {
+                      "key": "0x9106fecc",
+                      "ty": 7
+                    }
+                  },
+                  "ty": 25
+                }
+              }
+            },
+            {
+              "name": "owner",
+              "layout": {
+                "leaf": {
+                  "key": "0x00000000",
+                  "ty": 1
+                }
+              }
+            },
+            {
+              "name": "data",
+              "layout": {
+                "struct": {
+                  "name": "PSP34Data",
+                  "fields": [
+                    {
+                      "name": "token_owner",
+                      "layout": {
+                        "root": {
+                          "root_key": "0x9ee5f062",
+                          "layout": {
+                            "leaf": {
+                              "key": "0x9ee5f062",
+                              "ty": 1
+                            }
+                          },
+                          "ty": 29
+                        }
+                      }
+                    },
+                    {
+                      "name": "operator_approvals",
+                      "layout": {
+                        "root": {
+                          "root_key": "0x376782dd",
+                          "layout": {
+                            "leaf": {
+                              "key": "0x376782dd",
+                              "ty": 13
+                            }
+                          },
+                          "ty": 35
+                        }
+                      }
+                    },
+                    {
+                      "name": "balance",
+                      "layout": {
+                        "struct": {
+                          "name": "Balances",
+                          "fields": [
+                            {
+                              "name": "owned_tokens_count",
+                              "layout": {
+                                "root": {
+                                  "root_key": "0x8f5e9515",
+                                  "layout": {
+                                    "leaf": {
+                                      "key": "0x8f5e9515",
+                                      "ty": 0
+                                    }
+                                  },
+                                  "ty": 40
+                                }
+                              }
+                            },
+                            {
+                              "name": "total_supply",
+                              "layout": {
+                                "leaf": {
+                                  "key": "0x00000000",
+                                  "ty": 6
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "certificate_info",
+              "layout": {
+                "root": {
+                  "root_key": "0x7a88f967",
+                  "layout": {
+                    "struct": {
+                      "name": "CertificateInfo",
+                      "fields": [
+                        {
+                          "name": "course_id",
+                          "layout": {
+                            "leaf": {
+                              "key": "0x7a88f967",
+                              "ty": 0
+                            }
+                          }
+                        },
+                        {
+                          "name": "course_title",
+                          "layout": {
+                            "leaf": {
+                              "key": "0x7a88f967",
+                              "ty": 4
+                            }
+                          }
+                        },
+                        {
+                          "name": "student",
+                          "layout": {
+                            "leaf": {
+                              "key": "0x7a88f967",
+                              "ty": 1
+                            }
+                          }
+                        },
+                        {
+                          "name": "completion_date",
+                          "layout": {
+                            "leaf": {
+                              "key": "0x7a88f967",
+                              "ty": 5
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "ty": 43
+                }
+              }
+            },
+            {
+              "name": "attributes",
+              "layout": {
+                "root": {
+                  "root_key": "0x7a2b103e",
+                  "layout": {
+                    "leaf": {
+                      "key": "0x7a2b103e",
+                      "ty": 32
+                    }
+                  },
+                  "ty": 47
+                }
+              }
+            },
+            {
+              "name": "student_certificates",
+              "layout": {
+                "root": {
+                  "root_key": "0x07ab2ed5",
+                  "layout": {
+                    "leaf": {
+                      "key": "0x07ab2ed5",
+                      "ty": 51
+                    }
+                  },
+                  "ty": 52
+                }
+              }
+            }
+          ]
+        }
+      },
+      "ty": 55
+    }
+  },
+  "spec": {
+    "constructors": [
+      {
+        "label": "new",
+        "selector": "0x9bae9d5e",
+        "payable": false,
+        "args": [],
+        "returnType": {
+          "type": 58,
+          "displayName": [
+            "ink_primitives",
+            "ConstructorResult"
+          ]
+        },
+        "docs": [],
+        "default": false
+      }
+    ],
+    "messages": [
+      {
+        "label": "create_course",
+        "selector": "0xc75902bc",
+        "mutates": true,
+        "payable": false,
+        "args": [
+          {
+            "label": "title",
+            "type": {
+              "type": 4,
+              "displayName": [
+                "String"
+              ]
+            }
+          },
+          {
+            "label": "description",
+            "type": {
+              "type": 4,
+              "displayName": [
+                "String"
+              ]
+            }
+          },
+          {
+            "label": "max_students",
+            "type": {
+              "type": 0,
+              "displayName": [
+                "u32"
+              ]
+            }
+          },
+          {
+            "label": "start_time",
+            "type": {
+              "type": 5,
+              "displayName": [
+                "Timestamp"
+              ]
+            }
+          },
+          {
+            "label": "end_time",
+            "type": {
+              "type": 5,
+              "displayName": [
+                "Timestamp"
+              ]
+            }
+          },
+          {
+            "label": "price",
+            "type": {
+              "type": 6,
+              "displayName": [
+                "Balance"
+              ]
+            }
+          },
+          {
+            "label": "metadata_hash",
+            "type": {
+              "type": 4,
+              "displayName": [
+                "String"
+              ]
+            }
+          }
+        ],
+        "returnType": {
+          "type": 60,
+          "displayName": [
+            "ink",
+            "MessageResult"
+          ]
+        },
+        "docs": [],
+        "default": false
+      },
+      {
+        "label": "update_course",
+        "selector": "0x73ce84fc",
+        "mutates": true,
+        "payable": false,
+        "args": [
+          {
+            "label": "course_id",
+            "type": {
+              "type": 0,
+              "displayName": [
+                "u32"
+              ]
+            }
+          },
+          {
+            "label": "title",
+            "type": {
+              "type": 64,
+              "displayName": [
+                "Option"
+              ]
+            }
+          },
+          {
+            "label": "description",
+            "type": {
+              "type": 64,
+              "displayName": [
+                "Option"
+              ]
+            }
+          },
+          {
+            "label": "max_students",
+            "type": {
+              "type": 65,
+              "displayName": [
+                "Option"
+              ]
+            }
+          },
+          {
+            "label": "price",
+            "type": {
+              "type": 66,
+              "displayName": [
+                "Option"
+              ]
+            }
+          },
+          {
+            "label": "active",
+            "type": {
+              "type": 67,
+              "displayName": [
+                "Option"
+              ]
+            }
+          },
+          {
+            "label": "metadata_hash",
+            "type": {
+              "type": 64,
+              "displayName": [
+                "Option"
+              ]
+            }
+          }
+        ],
+        "returnType": {
+          "type": 68,
+          "displayName": [
+            "ink",
+            "MessageResult"
+          ]
+        },
+        "docs": [],
+        "default": false
+      },
+      {
+        "label": "enroll",
+        "selector": "0x8c18306a",
+        "mutates": true,
+        "payable": true,
+        "args": [
+          {
+            "label": "course_id",
+            "type": {
+              "type": 0,
+              "displayName": [
+                "u32"
+              ]
+            }
+          }
+        ],
+        "returnType": {
+          "type": 68,
+          "displayName": [
+            "ink",
+            "MessageResult"
+          ]
+        },
+        "docs": [],
+        "default": false
+      },
+      {
+        "label": "complete_course",
+        "selector": "0xb143bac4",
+        "mutates": true,
+        "payable": false,
+        "args": [
+          {
+            "label": "course_id",
+            "type": {
+              "type": 0,
+              "displayName": [
+                "u32"
+              ]
+            }
+          },
+          {
+            "label": "student",
+            "type": {
+              "type": 1,
+              "displayName": [
+                "AccountId"
+              ]
+            }
+          }
+        ],
+        "returnType": {
+          "type": 68,
+          "displayName": [
+            "ink",
+            "MessageResult"
+          ]
+        },
+        "docs": [],
+        "default": false
+      },
+      {
+        "label": "verify_enrollment",
+        "selector": "0x4b7c20d8",
+        "mutates": false,
+        "payable": false,
+        "args": [
+          {
+            "label": "student",
+            "type": {
+              "type": 1,
+              "displayName": [
+                "AccountId"
+              ]
+            }
+          },
+          {
+            "label": "course_id",
+            "type": {
+              "type": 0,
+              "displayName": [
+                "u32"
+              ]
+            }
+          }
+        ],
+        "returnType": {
+          "type": 70,
+          "displayName": [
+            "ink",
+            "MessageResult"
+          ]
+        },
+        "docs": [],
+        "default": false
+      },
+      {
+        "label": "verify_completion",
+        "selector": "0xb31d135b",
+        "mutates": false,
+        "payable": false,
+        "args": [
+          {
+            "label": "student",
+            "type": {
+              "type": 1,
+              "displayName": [
+                "AccountId"
+              ]
+            }
+          },
+          {
+            "label": "course_id",
+            "type": {
+              "type": 0,
+              "displayName": [
+                "u32"
+              ]
+            }
+          }
+        ],
+        "returnType": {
+          "type": 70,
+          "displayName": [
+            "ink",
+            "MessageResult"
+          ]
+        },
+        "docs": [],
+        "default": false
+      },
+      {
+        "label": "get_course",
+        "selector": "0x2553bbb2",
+        "mutates": false,
+        "payable": false,
+        "args": [
+          {
+            "label": "course_id",
+            "type": {
+              "type": 0,
+              "displayName": [
+                "u32"
+              ]
+            }
+          }
+        ],
+        "returnType": {
+          "type": 71,
+          "displayName": [
+            "ink",
+            "MessageResult"
+          ]
+        },
+        "docs": [],
+        "default": false
+      },
+      {
+        "label": "get_student_courses",
+        "selector": "0xd7691439",
+        "mutates": false,
+        "payable": false,
+        "args": [
+          {
+            "label": "student",
+            "type": {
+              "type": 1,
+              "displayName": [
+                "AccountId"
+              ]
+            }
+          }
+        ],
+        "returnType": {
+          "type": 73,
+          "displayName": [
+            "ink",
+            "MessageResult"
+          ]
+        },
+        "docs": [],
+        "default": false
+      },
+      {
+        "label": "get_certificate_attribute",
+        "selector": "0xf4787efa",
+        "mutates": false,
+        "payable": false,
+        "args": [
+          {
+            "label": "id",
+            "type": {
+              "type": 30,
+              "displayName": [
+                "psp34",
+                "Id"
+              ]
+            }
+          },
+          {
+            "label": "key",
+            "type": {
+              "type": 32,
+              "displayName": [
+                "Vec"
+              ]
+            }
+          }
+        ],
+        "returnType": {
+          "type": 74,
+          "displayName": [
+            "ink",
+            "MessageResult"
+          ]
+        },
+        "docs": [],
+        "default": false
+      },
+      {
+        "label": "get_student_certificate_vector",
+        "selector": "0x51f4b43d",
+        "mutates": false,
+        "payable": false,
+        "args": [
+          {
+            "label": "student",
+            "type": {
+              "type": 1,
+              "displayName": [
+                "AccountId"
+              ]
+            }
+          }
+        ],
+        "returnType": {
+          "type": 76,
+          "displayName": [
+            "ink",
+            "MessageResult"
+          ]
+        },
+        "docs": [],
+        "default": false
+      },
+      {
+        "label": "get_teacher_courses",
+        "selector": "0x2e80cb06",
+        "mutates": false,
+        "payable": false,
+        "args": [
+          {
+            "label": "teacher",
+            "type": {
+              "type": 1,
+              "displayName": [
+                "AccountId"
+              ]
+            }
+          }
+        ],
+        "returnType": {
+          "type": 73,
+          "displayName": [
+            "ink",
+            "MessageResult"
+          ]
+        },
+        "docs": [],
+        "default": false
+      },
+      {
+        "label": "get_course_students",
+        "selector": "0x6641f01b",
+        "mutates": false,
+        "payable": false,
+        "args": [
+          {
+            "label": "course_id",
+            "type": {
+              "type": 0,
+              "displayName": [
+                "u32"
+              ]
+            }
+          }
+        ],
+        "returnType": {
+          "type": 77,
+          "displayName": [
+            "ink",
+            "MessageResult"
+          ]
+        },
+        "docs": [],
+        "default": false
+      },
+      {
+        "label": "get_courses",
+        "selector": "0xe28627e0",
+        "mutates": false,
+        "payable": false,
+        "args": [],
+        "returnType": {
+          "type": 78,
+          "displayName": [
+            "ink",
+            "MessageResult"
+          ]
+        },
+        "docs": [],
+        "default": false
+      },
+      {
+        "label": "verify_certificate",
+        "selector": "0x6d3a5767",
+        "mutates": false,
+        "payable": false,
+        "args": [
+          {
+            "label": "id",
+            "type": {
+              "type": 30,
+              "displayName": [
+                "psp34",
+                "Id"
+              ]
+            }
+          }
+        ],
+        "returnType": {
+          "type": 80,
+          "displayName": [
+            "ink",
+            "MessageResult"
+          ]
+        },
+        "docs": [],
+        "default": false
+      },
+      {
+        "label": "PSP34::collection_id",
+        "selector": "0xffa27a5f",
+        "mutates": false,
+        "payable": false,
+        "args": [],
+        "returnType": {
+          "type": 82,
+          "displayName": [
+            "ink",
+            "MessageResult"
+          ]
+        },
+        "docs": [],
+        "default": false
+      },
+      {
+        "label": "PSP34::balance_of",
+        "selector": "0xcde7e55f",
+        "mutates": false,
+        "payable": false,
+        "args": [
+          {
+            "label": "owner",
+            "type": {
+              "type": 1,
+              "displayName": [
+                "AccountId"
+              ]
+            }
+          }
+        ],
+        "returnType": {
+          "type": 83,
+          "displayName": [
+            "ink",
+            "MessageResult"
+          ]
+        },
+        "docs": [],
+        "default": false
+      },
+      {
+        "label": "PSP34::owner_of",
+        "selector": "0x1168624d",
+        "mutates": false,
+        "payable": false,
+        "args": [
+          {
+            "label": "id",
+            "type": {
+              "type": 30,
+              "displayName": [
+                "Id"
+              ]
+            }
+          }
+        ],
+        "returnType": {
+          "type": 84,
+          "displayName": [
+            "ink",
+            "MessageResult"
+          ]
+        },
+        "docs": [],
+        "default": false
+      },
+      {
+        "label": "PSP34::allowance",
+        "selector": "0x4790f55a",
+        "mutates": false,
+        "payable": false,
+        "args": [
+          {
+            "label": "owner",
+            "type": {
+              "type": 1,
+              "displayName": [
+                "AccountId"
+              ]
+            }
+          },
+          {
+            "label": "operator",
+            "type": {
+              "type": 1,
+              "displayName": [
+                "AccountId"
+              ]
+            }
+          },
+          {
+            "label": "id",
+            "type": {
+              "type": 37,
+              "displayName": [
+                "Option"
+              ]
+            }
+          }
+        ],
+        "returnType": {
+          "type": 70,
+          "displayName": [
+            "ink",
+            "MessageResult"
+          ]
+        },
+        "docs": [],
+        "default": false
+      },
+      {
+        "label": "PSP34::approve",
+        "selector": "0x1932a8b0",
+        "mutates": true,
+        "payable": false,
+        "args": [
+          {
+            "label": "operator",
+            "type": {
+              "type": 1,
+              "displayName": [
+                "AccountId"
+              ]
+            }
+          },
+          {
+            "label": "id",
+            "type": {
+              "type": 37,
+              "displayName": [
+                "Option"
+              ]
+            }
+          },
+          {
+            "label": "approved",
+            "type": {
+              "type": 7,
+              "displayName": [
+                "bool"
+              ]
+            }
+          }
+        ],
+        "returnType": {
+          "type": 86,
+          "displayName": [
+            "ink",
+            "MessageResult"
+          ]
+        },
+        "docs": [],
+        "default": false
+      },
+      {
+        "label": "PSP34::transfer",
+        "selector": "0x3128d61b",
+        "mutates": true,
+        "payable": false,
+        "args": [
+          {
+            "label": "_to",
+            "type": {
+              "type": 1,
+              "displayName": [
+                "AccountId"
+              ]
+            }
+          },
+          {
+            "label": "_id",
+            "type": {
+              "type": 30,
+              "displayName": [
+                "Id"
+              ]
+            }
+          },
+          {
+            "label": "_data",
+            "type": {
+              "type": 32,
+              "displayName": [
+                "Vec"
+              ]
+            }
+          }
+        ],
+        "returnType": {
+          "type": 86,
+          "displayName": [
+            "ink",
+            "MessageResult"
+          ]
+        },
+        "docs": [],
+        "default": false
+      },
+      {
+        "label": "PSP34::total_supply",
+        "selector": "0x628413fe",
+        "mutates": false,
+        "payable": false,
+        "args": [],
+        "returnType": {
+          "type": 88,
+          "displayName": [
+            "ink",
+            "MessageResult"
+          ]
+        },
+        "docs": [],
+        "default": false
+      }
+    ],
+    "events": [
+      {
+        "label": "CourseCreated",
+        "module_path": "course_management::eduverse",
+        "signature_topic": "0x8f630585a651437e82e60e9b8ac4159449bee1767e44f50fcc3c587711767764",
+        "args": [
+          {
+            "label": "course_id",
+            "indexed": true,
+            "type": {
+              "type": 0,
+              "displayName": [
+                "u32"
+              ]
+            },
+            "docs": []
+          },
+          {
+            "label": "teacher",
+            "indexed": true,
+            "type": {
+              "type": 1,
+              "displayName": [
+                "AccountId"
+              ]
+            },
+            "docs": []
+          },
+          {
+            "label": "title",
+            "indexed": false,
+            "type": {
+              "type": 4,
+              "displayName": [
+                "String"
+              ]
+            },
+            "docs": []
+          }
+        ],
+        "docs": []
+      },
+      {
+        "label": "StudentEnrolled",
+        "module_path": "course_management::eduverse",
+        "signature_topic": "0x1c865197d2cbc68e8fd57c21edfe8b6cda0829032b34c6c1bc3bd34ee09b5147",
+        "args": [
+          {
+            "label": "course_id",
+            "indexed": true,
+            "type": {
+              "type": 0,
+              "displayName": [
+                "u32"
+              ]
+            },
+            "docs": []
+          },
+          {
+            "label": "student",
+            "indexed": true,
+            "type": {
+              "type": 1,
+              "displayName": [
+                "AccountId"
+              ]
+            },
+            "docs": []
+          },
+          {
+            "label": "payment",
+            "indexed": false,
+            "type": {
+              "type": 6,
+              "displayName": [
+                "Balance"
+              ]
+            },
+            "docs": []
+          }
+        ],
+        "docs": []
+      },
+      {
+        "label": "CourseCompleted",
+        "module_path": "course_management::eduverse",
+        "signature_topic": "0xa464c6ca3bc5e2306ae0938dcad0daba557d12ca0bd36933d369662d05eb68fa",
+        "args": [
+          {
+            "label": "course_id",
+            "indexed": true,
+            "type": {
+              "type": 0,
+              "displayName": [
+                "u32"
+              ]
+            },
+            "docs": []
+          },
+          {
+            "label": "student",
+            "indexed": true,
+            "type": {
+              "type": 1,
+              "displayName": [
+                "AccountId"
+              ]
+            },
+            "docs": []
+          },
+          {
+            "label": "certificate_id",
+            "indexed": false,
+            "type": {
+              "type": 30,
+              "displayName": [
+                "psp34",
+                "Id"
+              ]
+            },
+            "docs": []
+          }
+        ],
+        "docs": []
+      },
+      {
+        "label": "CourseUpdated",
+        "module_path": "course_management::eduverse",
+        "signature_topic": "0x7cf31f1ba1233c3fdc1b880e9c15d04c9a6cd0ce7cd183f9e94fdfce1f64759a",
+        "args": [
+          {
+            "label": "course_id",
+            "indexed": true,
+            "type": {
+              "type": 0,
+              "displayName": [
+                "u32"
+              ]
+            },
+            "docs": []
+          },
+          {
+            "label": "teacher",
+            "indexed": true,
+            "type": {
+              "type": 1,
+              "displayName": [
+                "AccountId"
+              ]
+            },
+            "docs": []
+          }
+        ],
+        "docs": []
+      },
+      {
+        "label": "PSP34Transfer",
+        "module_path": "course_management::eduverse",
+        "signature_topic": "0x37f764cc9dabdded3b69975f9814f7cee0eea155363b3ed9e270ccb59018bb78",
+        "args": [
+          {
+            "label": "from",
+            "indexed": true,
+            "type": {
+              "type": 85,
+              "displayName": [
+                "Option"
+              ]
+            },
+            "docs": []
+          },
+          {
+            "label": "to",
+            "indexed": true,
+            "type": {
+              "type": 85,
+              "displayName": [
+                "Option"
+              ]
+            },
+            "docs": []
+          },
+          {
+            "label": "id",
+            "indexed": true,
+            "type": {
+              "type": 30,
+              "displayName": [
+                "Id"
+              ]
+            },
+            "docs": []
+          }
+        ],
+        "docs": []
+      },
+      {
+        "label": "PSP34Approval",
+        "module_path": "course_management::eduverse",
+        "signature_topic": "0x8cebfc78936179260f7766838186fb4e989cd8d199e1d141dc6e0a0443f02c3c",
+        "args": [
+          {
+            "label": "owner",
+            "indexed": true,
+            "type": {
+              "type": 1,
+              "displayName": [
+                "AccountId"
+              ]
+            },
+            "docs": []
+          },
+          {
+            "label": "operator",
+            "indexed": true,
+            "type": {
+              "type": 1,
+              "displayName": [
+                "AccountId"
+              ]
+            },
+            "docs": []
+          },
+          {
+            "label": "id",
+            "indexed": true,
+            "type": {
+              "type": 37,
+              "displayName": [
+                "Option"
+              ]
+            },
+            "docs": []
+          },
+          {
+            "label": "approved",
+            "indexed": false,
+            "type": {
+              "type": 7,
+              "displayName": [
+                "bool"
+              ]
+            },
+            "docs": []
+          }
+        ],
+        "docs": []
+      },
+      {
+        "label": "PSP34AttributeSet",
+        "module_path": "course_management::eduverse",
+        "signature_topic": "0x87562dcaae854ccedc1b81c9445acf9ed2b91608df8b72458063dbe523e10065",
+        "args": [
+          {
+            "label": "id",
+            "indexed": true,
+            "type": {
+              "type": 30,
+              "displayName": [
+                "Id"
+              ]
+            },
+            "docs": []
+          },
+          {
+            "label": "key",
+            "indexed": false,
+            "type": {
+              "type": 32,
+              "displayName": [
+                "Vec"
+              ]
+            },
+            "docs": []
+          },
+          {
+            "label": "data",
+            "indexed": false,
+            "type": {
+              "type": 32,
+              "displayName": [
+                "Vec"
+              ]
+            },
+            "docs": []
+          }
+        ],
+        "docs": []
+      },
+      {
+        "label": "Approval",
+        "module_path": "psp34::token",
+        "signature_topic": "0xc9a3fba19eeb2a9b9091700e89ba754436de21299bd70f371179aa151e05e83b",
+        "args": [
+          {
+            "label": "owner",
+            "indexed": true,
+            "type": {
+              "type": 1,
+              "displayName": [
+                "AccountId"
+              ]
+            },
+            "docs": []
+          },
+          {
+            "label": "operator",
+            "indexed": true,
+            "type": {
+              "type": 1,
+              "displayName": [
+                "AccountId"
+              ]
+            },
+            "docs": []
+          },
+          {
+            "label": "id",
+            "indexed": true,
+            "type": {
+              "type": 37,
+              "displayName": [
+                "Option"
+              ]
+            },
+            "docs": []
+          },
+          {
+            "label": "approved",
+            "indexed": false,
+            "type": {
+              "type": 7,
+              "displayName": [
+                "bool"
+              ]
+            },
+            "docs": []
+          }
+        ],
+        "docs": []
+      },
+      {
+        "label": "Transfer",
+        "module_path": "psp34::token",
+        "signature_topic": "0x90df221c7b90ec18e837e47807b0e410761cbc1b859b0eccc9affd1b51567a4f",
+        "args": [
+          {
+            "label": "from",
+            "indexed": true,
+            "type": {
+              "type": 85,
+              "displayName": [
+                "Option"
+              ]
+            },
+            "docs": []
+          },
+          {
+            "label": "to",
+            "indexed": true,
+            "type": {
+              "type": 85,
+              "displayName": [
+                "Option"
+              ]
+            },
+            "docs": []
+          },
+          {
+            "label": "id",
+            "indexed": true,
+            "type": {
+              "type": 30,
+              "displayName": [
+                "Id"
+              ]
+            },
+            "docs": []
+          }
+        ],
+        "docs": []
+      },
+      {
+        "label": "AttributeSet",
+        "module_path": "psp34::token",
+        "signature_topic": "0x6452d0d8af1a4a23e1de3181b19722639a184bdad068c20302ca52b742b7d6a7",
+        "args": [
+          {
+            "label": "id",
+            "indexed": false,
+            "type": {
+              "type": 30,
+              "displayName": [
+                "Id"
+              ]
+            },
+            "docs": []
+          },
+          {
+            "label": "key",
+            "indexed": false,
+            "type": {
+              "type": 32,
+              "displayName": [
+                "Vec"
+              ]
+            },
+            "docs": []
+          },
+          {
+            "label": "data",
+            "indexed": false,
+            "type": {
+              "type": 32,
+              "displayName": [
+                "Vec"
+              ]
+            },
+            "docs": []
+          }
+        ],
+        "docs": []
+      }
+    ],
+    "docs": [],
+    "lang_error": {
+      "type": 59,
+      "displayName": [
+        "ink",
+        "LangError"
+      ]
+    },
+    "environment": {
+      "accountId": {
+        "type": 1,
+        "displayName": [
+          "AccountId"
+        ]
+      },
+      "balance": {
+        "type": 6,
+        "displayName": [
+          "Balance"
+        ]
+      },
+      "hash": {
+        "type": 89,
+        "displayName": [
+          "Hash"
+        ]
+      },
+      "timestamp": {
+        "type": 5,
+        "displayName": [
+          "Timestamp"
+        ]
+      },
+      "blockNumber": {
+        "type": 0,
+        "displayName": [
+          "BlockNumber"
+        ]
+      },
+      "chainExtension": {
+        "type": 90,
+        "displayName": [
+          "ChainExtension"
+        ]
+      },
+      "maxEventTopics": 4,
+      "staticBufferSize": 16384
+    }
+  }
+}

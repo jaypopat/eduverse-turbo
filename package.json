@@ -9,6 +9,8 @@
     "check-types": "turbo run check-types"
   },
   "devDependencies": {
+    "@tanstack/router-plugin": "^1.114.27",
+    "path": "^0.12.7",
     "prettier": "^3.5.3",
     "turbo": "^2.4.4",
     "typescript": "5.8.2"
@@ -20,5 +22,11 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+    "@tailwindcss/vite": "^4.0.15",
+    "@tanstack/react-router": "^1.114.27",
+    "class-variance-authority": "^0.7.1",
+    "tailwindcss": "^4.0.15"
+  }
 }
